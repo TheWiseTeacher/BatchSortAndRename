@@ -52,10 +52,15 @@ namespace BatchSortAndRename
             this.num_filename_numberStartFrom = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lab_numFiles = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lab_task = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_files)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -63,6 +68,7 @@ namespace BatchSortAndRename
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_filename_numberStartFrom)).BeginInit();
             this.groupBox4.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_files
@@ -86,7 +92,7 @@ namespace BatchSortAndRename
             this.dgv_files.RowTemplate.Height = 24;
             this.dgv_files.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_files.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_files.Size = new System.Drawing.Size(495, 502);
+            this.dgv_files.Size = new System.Drawing.Size(521, 420);
             this.dgv_files.TabIndex = 0;
             this.dgv_files.TabStop = false;
             // 
@@ -130,33 +136,32 @@ namespace BatchSortAndRename
             this.rad_sortAscending.AutoSize = true;
             this.rad_sortAscending.Location = new System.Drawing.Point(9, 19);
             this.rad_sortAscending.Name = "rad_sortAscending";
-            this.rad_sortAscending.Size = new System.Drawing.Size(75, 17);
+            this.rad_sortAscending.Size = new System.Drawing.Size(105, 17);
             this.rad_sortAscending.TabIndex = 3;
             this.rad_sortAscending.TabStop = true;
-            this.rad_sortAscending.Text = "Ascending";
+            this.rad_sortAscending.Text = "Ascending (A-Z)";
             this.rad_sortAscending.UseVisualStyleBackColor = true;
             this.rad_sortAscending.CheckedChanged += new System.EventHandler(this.rad_sortAscending_CheckedChanged);
             // 
             // rad_sortDescending
             // 
             this.rad_sortDescending.AutoSize = true;
-            this.rad_sortDescending.Location = new System.Drawing.Point(9, 42);
+            this.rad_sortDescending.Location = new System.Drawing.Point(159, 21);
             this.rad_sortDescending.Name = "rad_sortDescending";
-            this.rad_sortDescending.Size = new System.Drawing.Size(82, 17);
+            this.rad_sortDescending.Size = new System.Drawing.Size(112, 17);
             this.rad_sortDescending.TabIndex = 3;
             this.rad_sortDescending.TabStop = true;
-            this.rad_sortDescending.Text = "Descending";
+            this.rad_sortDescending.Text = "Descending (Z-A)";
             this.rad_sortDescending.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.rad_sortDescending);
             this.groupBox2.Controls.Add(this.rad_sortAscending);
-            this.groupBox2.Location = new System.Drawing.Point(12, 366);
+            this.groupBox2.Location = new System.Drawing.Point(12, 167);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(333, 67);
-            this.groupBox2.TabIndex = 4;
+            this.groupBox2.Size = new System.Drawing.Size(333, 45);
+            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Sorting direction";
             // 
@@ -168,7 +173,7 @@ namespace BatchSortAndRename
             this.tb_directory.Location = new System.Drawing.Point(6, 21);
             this.tb_directory.Name = "tb_directory";
             this.tb_directory.ReadOnly = true;
-            this.tb_directory.Size = new System.Drawing.Size(321, 20);
+            this.tb_directory.Size = new System.Drawing.Size(321, 22);
             this.tb_directory.TabIndex = 5;
             // 
             // groupBox1
@@ -203,7 +208,7 @@ namespace BatchSortAndRename
             0,
             0});
             this.num_filename_numberPadding.Name = "num_filename_numberPadding";
-            this.num_filename_numberPadding.Size = new System.Drawing.Size(168, 20);
+            this.num_filename_numberPadding.Size = new System.Drawing.Size(168, 22);
             this.num_filename_numberPadding.TabIndex = 2;
             this.num_filename_numberPadding.Value = new decimal(new int[] {
             3,
@@ -233,10 +238,10 @@ namespace BatchSortAndRename
             this.groupBox3.Controls.Add(this.num_filename_numberStartFrom);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(12, 95);
+            this.groupBox3.Location = new System.Drawing.Point(12, 218);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(333, 147);
-            this.groupBox3.TabIndex = 2;
+            this.groupBox3.Size = new System.Drawing.Size(333, 151);
+            this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Naming configuration";
             // 
@@ -257,7 +262,7 @@ namespace BatchSortAndRename
             this.tb_extension.Enabled = false;
             this.tb_extension.Location = new System.Drawing.Point(159, 122);
             this.tb_extension.Name = "tb_extension";
-            this.tb_extension.Size = new System.Drawing.Size(168, 20);
+            this.tb_extension.Size = new System.Drawing.Size(168, 22);
             this.tb_extension.TabIndex = 6;
             this.tb_extension.Validated += new System.EventHandler(this.tb_extension_Validated);
             // 
@@ -267,7 +272,7 @@ namespace BatchSortAndRename
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_filename_end.Location = new System.Drawing.Point(159, 96);
             this.tb_filename_end.Name = "tb_filename_end";
-            this.tb_filename_end.Size = new System.Drawing.Size(168, 20);
+            this.tb_filename_end.Size = new System.Drawing.Size(168, 22);
             this.tb_filename_end.TabIndex = 4;
             this.tb_filename_end.Validated += new System.EventHandler(this.tb_filename_Validated);
             // 
@@ -277,7 +282,7 @@ namespace BatchSortAndRename
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_filename_begin.Location = new System.Drawing.Point(159, 70);
             this.tb_filename_begin.Name = "tb_filename_begin";
-            this.tb_filename_begin.Size = new System.Drawing.Size(168, 20);
+            this.tb_filename_begin.Size = new System.Drawing.Size(168, 22);
             this.tb_filename_begin.TabIndex = 3;
             this.tb_filename_begin.Validated += new System.EventHandler(this.tb_filename_Validated);
             // 
@@ -308,7 +313,7 @@ namespace BatchSortAndRename
             0,
             0});
             this.num_filename_numberStartFrom.Name = "num_filename_numberStartFrom";
-            this.num_filename_numberStartFrom.Size = new System.Drawing.Size(168, 20);
+            this.num_filename_numberStartFrom.Size = new System.Drawing.Size(168, 22);
             this.num_filename_numberStartFrom.TabIndex = 1;
             this.num_filename_numberStartFrom.Value = new decimal(new int[] {
             1,
@@ -332,53 +337,17 @@ namespace BatchSortAndRename
             this.groupBox4.Controls.Add(this.radioButton3);
             this.groupBox4.Controls.Add(this.radioButton2);
             this.groupBox4.Controls.Add(this.radioButton1);
-            this.groupBox4.Location = new System.Drawing.Point(12, 248);
+            this.groupBox4.Location = new System.Drawing.Point(12, 95);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(333, 112);
-            this.groupBox4.TabIndex = 5;
+            this.groupBox4.Size = new System.Drawing.Size(333, 66);
+            this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Sort by";
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(9, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(90, 17);
-            this.radioButton1.TabIndex = 3;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Date modified";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.rad_sortAscending_CheckedChanged);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(9, 42);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(87, 17);
-            this.radioButton2.TabIndex = 3;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Date created";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.rad_sortAscending_CheckedChanged);
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(9, 65);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(65, 17);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "FileType";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.rad_sortAscending_CheckedChanged);
             // 
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(9, 88);
+            this.radioButton4.Location = new System.Drawing.Point(159, 42);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(45, 17);
             this.radioButton4.TabIndex = 3;
@@ -387,16 +356,101 @@ namespace BatchSortAndRename
             this.radioButton4.UseVisualStyleBackColor = true;
             this.radioButton4.CheckedChanged += new System.EventHandler(this.rad_sortAscending_CheckedChanged);
             // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(9, 42);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(68, 17);
+            this.radioButton3.TabIndex = 3;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "File type";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.rad_sortAscending_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(159, 19);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(90, 17);
+            this.radioButton2.TabIndex = 3;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Date created";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.rad_sortAscending_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(9, 19);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(98, 17);
+            this.radioButton1.TabIndex = 3;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Date modified";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.rad_sortAscending_CheckedChanged);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(12, 388);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(333, 44);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Process";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lab_task,
+            this.toolStripProgressBar1,
+            this.lab_numFiles});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 440);
+            this.statusStrip1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lab_numFiles
+            // 
+            this.lab_numFiles.Name = "lab_numFiles";
+            this.lab_numFiles.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.lab_numFiles.Size = new System.Drawing.Size(49, 17);
+            this.lab_numFiles.Text = "0 Files";
+            this.lab_numFiles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lab_task
+            // 
+            this.lab_task.Name = "lab_task";
+            this.lab_task.Size = new System.Drawing.Size(702, 17);
+            this.lab_task.Spring = true;
+            this.lab_task.Text = "Ready";
+            this.lab_task.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(858, 526);
+            this.ClientSize = new System.Drawing.Size(884, 462);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgv_files);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
             this.Name = "frm_main";
             this.Text = "Batch Sort And Rename v1.0";
@@ -412,7 +466,10 @@ namespace BatchSortAndRename
             ((System.ComponentModel.ISupportInitialize)(this.num_filename_numberStartFrom)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -445,6 +502,11 @@ namespace BatchSortAndRename
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lab_task;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripStatusLabel lab_numFiles;
     }
 }
 
