@@ -92,7 +92,7 @@ namespace BatchSortAndRename
             this.dgv_files.RowTemplate.Height = 24;
             this.dgv_files.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv_files.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_files.Size = new System.Drawing.Size(521, 420);
+            this.dgv_files.Size = new System.Drawing.Size(461, 406);
             this.dgv_files.TabIndex = 0;
             this.dgv_files.TabStop = false;
             // 
@@ -394,9 +394,8 @@ namespace BatchSortAndRename
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 388);
+            this.button1.Location = new System.Drawing.Point(12, 375);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(333, 44);
             this.button1.TabIndex = 5;
@@ -409,10 +408,10 @@ namespace BatchSortAndRename
             this.lab_task,
             this.toolStripProgressBar1,
             this.lab_numFiles});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 440);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 426);
             this.statusStrip1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(824, 22);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -442,7 +441,7 @@ namespace BatchSortAndRename
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 462);
+            this.ClientSize = new System.Drawing.Size(824, 448);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox4);
@@ -452,6 +451,7 @@ namespace BatchSortAndRename
             this.Controls.Add(this.dgv_files);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KeyPreview = true;
+            this.MinimumSize = new System.Drawing.Size(840, 486);
             this.Name = "frm_main";
             this.Text = "Batch Sort And Rename v1.0";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frm_main_KeyDown);
