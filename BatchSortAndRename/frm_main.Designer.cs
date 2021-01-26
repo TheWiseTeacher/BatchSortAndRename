@@ -569,7 +569,7 @@ namespace BatchSortAndRename
             this.MainMenuStrip = this.formMainMenuStrip;
             this.MinimumSize = new System.Drawing.Size(840, 486);
             this.Name = "frm_main";
-            this.Text = "Batch Sort And Rename v1.0";
+            this.Text = "Batch Sort And Rename";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frm_main_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_files)).EndInit();
             this.groupBox2.ResumeLayout(false);

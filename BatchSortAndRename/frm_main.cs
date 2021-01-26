@@ -19,6 +19,9 @@ namespace BatchSortAndRename
         {
             InitializeComponent();
 
+            // Append version to form title
+            this.Text = this.Text + " v" + Application.ProductVersion;
+
             dgv_files.Columns[dgv_filename.Index].ValueType = typeof(string);
             dgv_files.Columns[dgv_newfilename.Index].ValueType = typeof(string);
 
