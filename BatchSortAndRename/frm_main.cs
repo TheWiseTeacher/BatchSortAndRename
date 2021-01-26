@@ -35,6 +35,8 @@ namespace BatchSortAndRename
             // Default unchecked radio
             rad_sortDateCreated.Checked = rad_sortType.Checked = rad_sortName.Checked = 
                 rad_sortSize.Checked = rad_sortDescending.Checked = false;
+
+            ActiveControl = tb_directory;
         }
 
         private void LoadDirectoryFiles()
@@ -331,17 +333,32 @@ namespace BatchSortAndRename
 
         private void tb_directory_Validated(object sender, EventArgs e)
         {
-            if(Directory.Exists(tb_directory.Text))
+            string userDirectory = "";
+
+            // Clean the user written path of course
+            try { userDirectory = Path.GetFullPath(tb_directory.Text);}
+            catch (Exception) { }
+
+            // Putting drive letter without \\ opens executable path (so no)
+            // Also directory must exist
+            if (tb_directory.Text.Contains("\\") && Directory.Exists(userDirectory))
             {
-                // Clean the user written path of course
-                tb_directory.Text = Path.GetFullPath(tb_directory.Text).TrimEnd('\\', '/');
-                currentDirectory = tb_directory.Text;
+                // Allow \\ only for the drive letter
+                if (userDirectory.Split('\\').Length > 2)
+                    userDirectory = userDirectory.TrimEnd('\\');
+
+                tb_directory.Text = userDirectory;
+                currentDirectory = userDirectory;
+
+                tb_directory.Select(tb_directory.Text.Length, 0);
                 UpdateFilesList();
+
+                return;
             }
-            else
-            {
-                tb_directory.Text = currentDirectory;
-            }
+
+            // Show previous input
+            tb_directory.Text = currentDirectory;
+            tb_directory.Select(tb_directory.Text.Length, 0);
         }
     }
 }
