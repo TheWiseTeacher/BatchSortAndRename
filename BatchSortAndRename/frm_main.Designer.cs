@@ -29,6 +29,7 @@ namespace BatchSortAndRename
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_main));
             this.dgv_files = new System.Windows.Forms.DataGridView();
             this.dgv_filename = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_Sortedby = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +40,7 @@ namespace BatchSortAndRename
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tb_directory = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cb_enableLog = new System.Windows.Forms.CheckBox();
             this.btn_refresh = new System.Windows.Forms.Button();
             this.num_filename_numberPadding = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,6 +54,7 @@ namespace BatchSortAndRename
             this.num_filename_numberStartFrom = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rad_sortName = new System.Windows.Forms.RadioButton();
             this.rad_sortSize = new System.Windows.Forms.RadioButton();
             this.rad_sortType = new System.Windows.Forms.RadioButton();
             this.rad_sortDateCreated = new System.Windows.Forms.RadioButton();
@@ -61,8 +64,6 @@ namespace BatchSortAndRename
             this.lab_task = new System.Windows.Forms.ToolStripStatusLabel();
             this.pb_mainProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.lab_numFiles = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cb_enableLog = new System.Windows.Forms.CheckBox();
-            this.rad_sortName = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_files)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -194,6 +195,16 @@ namespace BatchSortAndRename
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Working directory";
+            // 
+            // cb_enableLog
+            // 
+            this.cb_enableLog.Location = new System.Drawing.Point(6, 49);
+            this.cb_enableLog.Name = "cb_enableLog";
+            this.cb_enableLog.Size = new System.Drawing.Size(159, 20);
+            this.cb_enableLog.TabIndex = 5;
+            this.cb_enableLog.Text = "Log name changes";
+            this.cb_enableLog.UseVisualStyleBackColor = true;
+            this.cb_enableLog.CheckedChanged += new System.EventHandler(this.cb_extension_CheckedChanged);
             // 
             // btn_refresh
             // 
@@ -352,6 +363,18 @@ namespace BatchSortAndRename
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Sort by";
             // 
+            // rad_sortName
+            // 
+            this.rad_sortName.AutoSize = true;
+            this.rad_sortName.Location = new System.Drawing.Point(171, 42);
+            this.rad_sortName.Name = "rad_sortName";
+            this.rad_sortName.Size = new System.Drawing.Size(54, 17);
+            this.rad_sortName.TabIndex = 3;
+            this.rad_sortName.TabStop = true;
+            this.rad_sortName.Text = "Name";
+            this.rad_sortName.UseVisualStyleBackColor = true;
+            this.rad_sortName.CheckedChanged += new System.EventHandler(this.rad_sortBy_CheckedChanged);
+            // 
             // rad_sortSize
             // 
             this.rad_sortSize.AutoSize = true;
@@ -446,28 +469,6 @@ namespace BatchSortAndRename
             this.lab_numFiles.Text = "0 Files";
             this.lab_numFiles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cb_enableLog
-            // 
-            this.cb_enableLog.Location = new System.Drawing.Point(6, 49);
-            this.cb_enableLog.Name = "cb_enableLog";
-            this.cb_enableLog.Size = new System.Drawing.Size(159, 20);
-            this.cb_enableLog.TabIndex = 5;
-            this.cb_enableLog.Text = "Log name changes";
-            this.cb_enableLog.UseVisualStyleBackColor = true;
-            this.cb_enableLog.CheckedChanged += new System.EventHandler(this.cb_extension_CheckedChanged);
-            // 
-            // rad_sortName
-            // 
-            this.rad_sortName.AutoSize = true;
-            this.rad_sortName.Location = new System.Drawing.Point(171, 42);
-            this.rad_sortName.Name = "rad_sortName";
-            this.rad_sortName.Size = new System.Drawing.Size(54, 17);
-            this.rad_sortName.TabIndex = 3;
-            this.rad_sortName.TabStop = true;
-            this.rad_sortName.Text = "Name";
-            this.rad_sortName.UseVisualStyleBackColor = true;
-            this.rad_sortName.CheckedChanged += new System.EventHandler(this.rad_sortBy_CheckedChanged);
-            // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -481,6 +482,7 @@ namespace BatchSortAndRename
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgv_files);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(840, 486);
             this.Name = "frm_main";
