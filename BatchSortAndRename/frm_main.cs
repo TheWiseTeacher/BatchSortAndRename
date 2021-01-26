@@ -216,6 +216,10 @@ namespace BatchSortAndRename
         {
             StreamWriter sw = null;
 
+            if (MessageBox.Show("You are on the point to change all file names.\nAre you sure you want to continue ?",
+                "Are you sure about that...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
             if (dgv_files.Rows.Count <= 0)
             {
                 MessageBox.Show("Nothing to process !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
