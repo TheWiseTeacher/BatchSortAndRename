@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -288,6 +289,41 @@ namespace BatchSortAndRename
             
             // Now everything is renamed so let's reload the directory
             UpdateFilesList();
+        }
+
+        private void tsm_about_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "Tool developed by TheWiseTeacher, 2021 \n" +
+                "Tool Icon by DiemenDesign",
+                "About tool", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void OpenLink(string link)
+        {
+            Process myProcess = new Process();
+
+            try
+            {
+                myProcess.StartInfo.UseShellExecute = true;
+                myProcess.StartInfo.FileName = link;
+                myProcess.Start();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Can't open link : " + e.Message);
+            }
+
+        }
+
+        private void tsm_github_Click(object sender, EventArgs e)
+        {
+            OpenLink("https://github.com/TheWiseTeacher/BatchSortAndRename");
+        }
+
+        private void tsm_exit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

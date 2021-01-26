@@ -64,6 +64,15 @@ namespace BatchSortAndRename
             this.lab_task = new System.Windows.Forms.ToolStripStatusLabel();
             this.pb_mainProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.lab_numFiles = new System.Windows.Forms.ToolStripStatusLabel();
+            this.formMainMenuStrip = new System.Windows.Forms.MenuStrip();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_about = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_github = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_selectFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_refresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsm_exit = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_files)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -72,6 +81,7 @@ namespace BatchSortAndRename
             ((System.ComponentModel.ISupportInitialize)(this.num_filename_numberStartFrom)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.formStatusStrip.SuspendLayout();
+            this.formMainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_files
@@ -90,7 +100,7 @@ namespace BatchSortAndRename
             this.dgv_Sortedby,
             this.dgv_newfilename});
             this.dgv_files.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgv_files.Location = new System.Drawing.Point(351, 12);
+            this.dgv_files.Location = new System.Drawing.Point(351, 32);
             this.dgv_files.MultiSelect = false;
             this.dgv_files.Name = "dgv_files";
             this.dgv_files.ReadOnly = true;
@@ -165,10 +175,10 @@ namespace BatchSortAndRename
             // 
             this.groupBox2.Controls.Add(this.rad_sortDescending);
             this.groupBox2.Controls.Add(this.rad_sortAscending);
-            this.groupBox2.Location = new System.Drawing.Point(12, 167);
+            this.groupBox2.Location = new System.Drawing.Point(12, 187);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(333, 45);
-            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Sorting direction";
             // 
@@ -189,10 +199,10 @@ namespace BatchSortAndRename
             this.groupBox1.Controls.Add(this.tb_directory);
             this.groupBox1.Controls.Add(this.btn_refresh);
             this.groupBox1.Controls.Add(this.btn_selectFolder);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(333, 77);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Working directory";
             // 
@@ -256,10 +266,10 @@ namespace BatchSortAndRename
             this.groupBox3.Controls.Add(this.num_filename_numberStartFrom);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(12, 218);
+            this.groupBox3.Location = new System.Drawing.Point(12, 238);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(333, 151);
-            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Naming configuration";
             // 
@@ -356,10 +366,10 @@ namespace BatchSortAndRename
             this.groupBox4.Controls.Add(this.rad_sortType);
             this.groupBox4.Controls.Add(this.rad_sortDateCreated);
             this.groupBox4.Controls.Add(this.rad_sortDateModified);
-            this.groupBox4.Location = new System.Drawing.Point(12, 95);
+            this.groupBox4.Location = new System.Drawing.Point(12, 115);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(333, 66);
-            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Sort by";
             // 
@@ -426,10 +436,10 @@ namespace BatchSortAndRename
             // btn_process
             // 
             this.btn_process.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_process.Location = new System.Drawing.Point(12, 375);
+            this.btn_process.Location = new System.Drawing.Point(12, 395);
             this.btn_process.Name = "btn_process";
             this.btn_process.Size = new System.Drawing.Size(333, 44);
-            this.btn_process.TabIndex = 5;
+            this.btn_process.TabIndex = 6;
             this.btn_process.Text = "Process";
             this.btn_process.UseVisualStyleBackColor = true;
             this.btn_process.Click += new System.EventHandler(this.btn_process_Click);
@@ -440,7 +450,7 @@ namespace BatchSortAndRename
             this.lab_task,
             this.pb_mainProgress,
             this.lab_numFiles});
-            this.formStatusStrip.Location = new System.Drawing.Point(0, 426);
+            this.formStatusStrip.Location = new System.Drawing.Point(0, 446);
             this.formStatusStrip.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.formStatusStrip.Name = "formStatusStrip";
             this.formStatusStrip.Size = new System.Drawing.Size(824, 22);
@@ -450,7 +460,7 @@ namespace BatchSortAndRename
             // lab_task
             // 
             this.lab_task.Name = "lab_task";
-            this.lab_task.Size = new System.Drawing.Size(652, 17);
+            this.lab_task.Size = new System.Drawing.Size(621, 17);
             this.lab_task.Spring = true;
             this.lab_task.Text = "Ready";
             this.lab_task.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -469,12 +479,85 @@ namespace BatchSortAndRename
             this.lab_numFiles.Text = "0 Files";
             this.lab_numFiles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // formMainMenuStrip
+            // 
+            this.formMainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.helpToolStripMenuItem});
+            this.formMainMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.formMainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.formMainMenuStrip.Name = "formMainMenuStrip";
+            this.formMainMenuStrip.Size = new System.Drawing.Size(824, 24);
+            this.formMainMenuStrip.TabIndex = 1;
+            this.formMainMenuStrip.Text = "menuStrip";
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsm_about,
+            this.tsm_github});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // tsm_about
+            // 
+            this.tsm_about.Name = "tsm_about";
+            this.tsm_about.Size = new System.Drawing.Size(180, 22);
+            this.tsm_about.Text = "About";
+            this.tsm_about.Click += new System.EventHandler(this.tsm_about_Click);
+            // 
+            // tsm_github
+            // 
+            this.tsm_github.Name = "tsm_github";
+            this.tsm_github.Size = new System.Drawing.Size(180, 22);
+            this.tsm_github.Text = "Github";
+            this.tsm_github.Click += new System.EventHandler(this.tsm_github_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsm_selectFolder,
+            this.tsm_refresh,
+            this.toolStripSeparator1,
+            this.tsm_exit});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
+            this.toolStripMenuItem1.Text = "File";
+            // 
+            // tsm_selectFolder
+            // 
+            this.tsm_selectFolder.Name = "tsm_selectFolder";
+            this.tsm_selectFolder.Size = new System.Drawing.Size(187, 22);
+            this.tsm_selectFolder.Text = "Select folder";
+            this.tsm_selectFolder.Click += new System.EventHandler(this.btn_selectFolder_Click);
+            // 
+            // tsm_refresh
+            // 
+            this.tsm_refresh.Name = "tsm_refresh";
+            this.tsm_refresh.Size = new System.Drawing.Size(187, 22);
+            this.tsm_refresh.Text = "Refresh directory files";
+            this.tsm_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(184, 6);
+            // 
+            // tsm_exit
+            // 
+            this.tsm_exit.Name = "tsm_exit";
+            this.tsm_exit.Size = new System.Drawing.Size(187, 22);
+            this.tsm_exit.Text = "Exit";
+            this.tsm_exit.Click += new System.EventHandler(this.tsm_exit_Click);
+            // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 448);
+            this.ClientSize = new System.Drawing.Size(824, 468);
             this.Controls.Add(this.formStatusStrip);
+            this.Controls.Add(this.formMainMenuStrip);
             this.Controls.Add(this.btn_process);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -484,6 +567,7 @@ namespace BatchSortAndRename
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.MainMenuStrip = this.formMainMenuStrip;
             this.MinimumSize = new System.Drawing.Size(840, 486);
             this.Name = "frm_main";
             this.Text = "Batch Sort And Rename v1.0";
@@ -501,6 +585,8 @@ namespace BatchSortAndRename
             this.groupBox4.PerformLayout();
             this.formStatusStrip.ResumeLayout(false);
             this.formStatusStrip.PerformLayout();
+            this.formMainMenuStrip.ResumeLayout(false);
+            this.formMainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -542,6 +628,15 @@ namespace BatchSortAndRename
         private System.Windows.Forms.ToolStripStatusLabel lab_numFiles;
         private System.Windows.Forms.CheckBox cb_enableLog;
         private System.Windows.Forms.RadioButton rad_sortName;
+        private System.Windows.Forms.MenuStrip formMainMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsm_about;
+        private System.Windows.Forms.ToolStripMenuItem tsm_github;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsm_selectFolder;
+        private System.Windows.Forms.ToolStripMenuItem tsm_refresh;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem tsm_exit;
     }
 }
 
