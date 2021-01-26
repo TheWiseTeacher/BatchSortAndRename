@@ -186,12 +186,11 @@ namespace BatchSortAndRename
             // 
             this.tb_directory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_directory.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tb_directory.Location = new System.Drawing.Point(6, 21);
             this.tb_directory.Name = "tb_directory";
-            this.tb_directory.ReadOnly = true;
             this.tb_directory.Size = new System.Drawing.Size(321, 22);
             this.tb_directory.TabIndex = 5;
+            this.tb_directory.Validated += new System.EventHandler(this.tb_directory_Validated);
             // 
             // groupBox1
             // 
@@ -460,7 +459,7 @@ namespace BatchSortAndRename
             // lab_task
             // 
             this.lab_task.Name = "lab_task";
-            this.lab_task.Size = new System.Drawing.Size(621, 17);
+            this.lab_task.Size = new System.Drawing.Size(652, 17);
             this.lab_task.Spring = true;
             this.lab_task.Text = "Ready";
             this.lab_task.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

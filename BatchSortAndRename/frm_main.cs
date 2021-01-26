@@ -110,6 +110,10 @@ namespace BatchSortAndRename
         {
             using (var fbd = new FolderBrowserDialog())
             {
+                fbd.Description = "Select the working folder where your files you want to batch rename are located :";
+                fbd.RootFolder = Environment.SpecialFolder.MyComputer;
+                fbd.SelectedPath = currentDirectory;
+
                 DialogResult result = fbd.ShowDialog();
 
                 if (result == DialogResult.OK && !string.IsNullOrEmpty(fbd.SelectedPath))
@@ -323,6 +327,21 @@ namespace BatchSortAndRename
         private void tsm_exit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void tb_directory_Validated(object sender, EventArgs e)
+        {
+            if(Directory.Exists(tb_directory.Text))
+            {
+                // Clean the user written path of course
+                tb_directory.Text = Path.GetFullPath(tb_directory.Text).TrimEnd('\\', '/');
+                currentDirectory = tb_directory.Text;
+                UpdateFilesList();
+            }
+            else
+            {
+                tb_directory.Text = currentDirectory;
+            }
         }
     }
 }
