@@ -228,7 +228,7 @@ namespace BatchSortAndRename
             {
                 foreach (DataGridViewRow r in dgv_files.Rows)
                 {
-                    /*
+                    
                     File.Move(
                         // Source file
                         currentDirectory + "\\" + r.Cells[dgv_filename.Index].Value,
@@ -236,15 +236,14 @@ namespace BatchSortAndRename
                         // Add this extension to prevent overwriting something else (still not safe at all - simple program)
                         currentDirectory + "\\" + r.Cells[dgv_newfilename.Index].Value + "._snr_"
                     );
-                    */
-
+                    
                     // Increment progress bar
                     pb_mainProgress.Value++;
                 }
 
                 foreach (DataGridViewRow r in dgv_files.Rows)
                 {
-                    /*
+                    
                     File.Move(
                         // Source file now as renamed before using the (._snr_) extension
                         currentDirectory + "\\" + r.Cells[dgv_newfilename.Index].Value + "._snr_",
@@ -252,8 +251,7 @@ namespace BatchSortAndRename
                         // Now safely rename files as they should be
                         currentDirectory + "\\" + r.Cells[dgv_newfilename.Index].Value
                     );
-                    */
-
+                    
                     // Log file old name
                     if(cb_enableLog.Checked && sw != null)
                         sw.WriteLine(r.Cells[dgv_newfilename.Index].Value + "  >>>  " + r.Cells[dgv_filename.Index].Value);
@@ -280,7 +278,7 @@ namespace BatchSortAndRename
                 "Job's done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
             // Now everything is renamed so let's reload the directory
-            LoadDirectoryFiles();
+            UpdateFilesList();
         }
     }
 }
