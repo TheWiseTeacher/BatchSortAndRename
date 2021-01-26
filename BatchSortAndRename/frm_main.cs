@@ -19,11 +19,14 @@ namespace BatchSortAndRename
             InitializeComponent();
 
             dgv_files.Columns[dgv_filename.Index].ValueType = typeof(string);
-            dgv_files.Columns[dgv_Sortedby.Index].ValueType = typeof(DateTime);
             dgv_files.Columns[dgv_newfilename.Index].ValueType = typeof(string);
 
-            rad_sortAscending.Checked = true;
-            rad_sortDescending.Checked = false;
+            // Default selected values
+            rad_sortDateModified.Checked = rad_sortAscending.Checked = true;
+
+            // Default unchecked radio
+            rad_sortDateCreated.Checked = rad_sortType.Checked = 
+                rad_sortSize.Checked = rad_sortDescending.Checked = false;
 
             // DEBUG
             currentDirectory = @"D:\Test";
@@ -32,23 +35,49 @@ namespace BatchSortAndRename
 
         private void LoadDirectoryFiles()
         {
+            // Some buffers
+            string fileName = "";
+            object sortingValue = "";
+
             // Clear rows
             dgv_files.Rows.Clear();
-            string fileName = "";
 
             if (files.Length <= 0)
                 return;
 
-            foreach(string f in files)
+            lab_numFiles.Text = $"{files.Length} Files";
+            pb_mainProgress.Maximum = files.Length;
+            pb_mainProgress.Value = 0;
+
+            foreach (string f in files)
             {
+                // Update list of files
                 fileName = Path.GetFileName(f);
-                dgv_files.Rows.Add(new object[] {fileName, File.GetLastWriteTime(f), ""});
+
+                if (rad_sortDateModified.Checked)
+                    sortingValue = File.GetLastWriteTime(f);
+
+                if (rad_sortDateCreated.Checked)
+                    sortingValue = File.GetCreationTime(f);
+
+                if(rad_sortType.Checked)
+                    sortingValue = Path.GetExtension(f);
+
+                if(rad_sortSize.Checked)
+                    sortingValue = new FileInfo(f).Length;
+
+                dgv_files.Rows.Add(new object[] {fileName, sortingValue, ""});
+
                 dgv_files.Sort(
                     dgv_files.Columns[dgv_Sortedby.Index], 
                     rad_sortAscending.Checked ? ListSortDirection.Ascending : ListSortDirection.Descending
                 );
+
+                // Increment progress bar
+                pb_mainProgress.Value += 1;
             }
 
+            pb_mainProgress.Value = 0;
             GenerateFilesNewNames();
         }
 
@@ -129,6 +158,45 @@ namespace BatchSortAndRename
         private void tb_filename_Validated(object sender, EventArgs e)
         {
             GenerateFilesNewNames();
+        }
+
+        private void rad_sortBy_CheckedChanged(object sender, EventArgs e)
+        {
+            // Clear rows before changing value types
+            dgv_files.Rows.Clear();
+
+            // Default options
+            dgv_files.Columns[dgv_Sortedby.Index].DefaultCellStyle.Format = "";
+            dgv_files.Columns[dgv_Sortedby.Index].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+
+            if (rad_sortDateModified.Checked)
+            {
+                dgv_Sortedby.HeaderText = "Date modified";
+                dgv_files.Columns[dgv_Sortedby.Index].ValueType = typeof(DateTime);
+            }
+
+            if (rad_sortDateCreated.Checked)
+            { 
+                dgv_Sortedby.HeaderText = "Date created";
+                dgv_files.Columns[dgv_Sortedby.Index].ValueType = typeof(DateTime);
+            }
+            
+            if (rad_sortType.Checked)
+            { 
+                dgv_Sortedby.HeaderText = "Type";
+                dgv_files.Columns[dgv_Sortedby.Index].ValueType = typeof(string);
+            }
+
+            if (rad_sortSize.Checked)
+            {
+                dgv_Sortedby.HeaderText = "Size (Bytes)";
+                dgv_files.Columns[dgv_Sortedby.Index].ValueType = typeof(long);
+                dgv_files.Columns[dgv_Sortedby.Index].DefaultCellStyle.Format = "N0";
+                dgv_files.Columns[dgv_Sortedby.Index].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            // Update
+            LoadDirectoryFiles();
         }
     }
 }
