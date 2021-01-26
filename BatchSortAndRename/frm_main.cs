@@ -29,10 +29,6 @@ namespace BatchSortAndRename
             // Default unchecked radio
             rad_sortDateCreated.Checked = rad_sortType.Checked = rad_sortName.Checked = 
                 rad_sortSize.Checked = rad_sortDescending.Checked = false;
-
-            // DEBUG
-            currentDirectory = @"D:\Test";
-            UpdateFilesList();
         }
 
         private void LoadDirectoryFiles()
@@ -102,6 +98,9 @@ namespace BatchSortAndRename
 
         private void UpdateFilesList()
         {
+            if (!Directory.Exists(currentDirectory))
+                return;
+
             tb_directory.Text = currentDirectory;
             files = Directory.GetFiles(currentDirectory);
             LoadDirectoryFiles();
