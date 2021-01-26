@@ -26,7 +26,7 @@ namespace BatchSortAndRename
             cb_enableLog.Checked = true;
 
             // Default unchecked radio
-            rad_sortDateCreated.Checked = rad_sortType.Checked = 
+            rad_sortDateCreated.Checked = rad_sortType.Checked = rad_sortName.Checked = 
                 rad_sortSize.Checked = rad_sortDescending.Checked = false;
 
             // DEBUG
@@ -65,6 +65,9 @@ namespace BatchSortAndRename
 
                 if(rad_sortSize.Checked)
                     sortingValue = new FileInfo(f).Length;
+
+                if(rad_sortName.Checked)
+                    sortingValue = Path.GetFileNameWithoutExtension(f);
 
                 dgv_files.Rows.Add(new object[] {fileName, sortingValue, ""});
 
@@ -182,6 +185,12 @@ namespace BatchSortAndRename
             if (rad_sortType.Checked)
             { 
                 dgv_Sortedby.HeaderText = "Type";
+                dgv_files.Columns[dgv_Sortedby.Index].ValueType = typeof(string);
+            }
+
+            if (rad_sortName.Checked)
+            { 
+                dgv_Sortedby.HeaderText = "Name";
                 dgv_files.Columns[dgv_Sortedby.Index].ValueType = typeof(string);
             }
 

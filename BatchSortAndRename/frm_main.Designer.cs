@@ -62,6 +62,7 @@ namespace BatchSortAndRename
             this.pb_mainProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.lab_numFiles = new System.Windows.Forms.ToolStripStatusLabel();
             this.cb_enableLog = new System.Windows.Forms.CheckBox();
+            this.rad_sortName = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_files)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -339,6 +340,7 @@ namespace BatchSortAndRename
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.rad_sortName);
             this.groupBox4.Controls.Add(this.rad_sortSize);
             this.groupBox4.Controls.Add(this.rad_sortType);
             this.groupBox4.Controls.Add(this.rad_sortDateCreated);
@@ -353,7 +355,7 @@ namespace BatchSortAndRename
             // rad_sortSize
             // 
             this.rad_sortSize.AutoSize = true;
-            this.rad_sortSize.Location = new System.Drawing.Point(171, 42);
+            this.rad_sortSize.Location = new System.Drawing.Point(108, 42);
             this.rad_sortSize.Name = "rad_sortSize";
             this.rad_sortSize.Size = new System.Drawing.Size(45, 17);
             this.rad_sortSize.TabIndex = 3;
@@ -425,7 +427,7 @@ namespace BatchSortAndRename
             // lab_task
             // 
             this.lab_task.Name = "lab_task";
-            this.lab_task.Size = new System.Drawing.Size(621, 17);
+            this.lab_task.Size = new System.Drawing.Size(652, 17);
             this.lab_task.Spring = true;
             this.lab_task.Text = "Ready";
             this.lab_task.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -453,6 +455,18 @@ namespace BatchSortAndRename
             this.cb_enableLog.Text = "Log name changes";
             this.cb_enableLog.UseVisualStyleBackColor = true;
             this.cb_enableLog.CheckedChanged += new System.EventHandler(this.cb_extension_CheckedChanged);
+            // 
+            // rad_sortName
+            // 
+            this.rad_sortName.AutoSize = true;
+            this.rad_sortName.Location = new System.Drawing.Point(171, 42);
+            this.rad_sortName.Name = "rad_sortName";
+            this.rad_sortName.Size = new System.Drawing.Size(54, 17);
+            this.rad_sortName.TabIndex = 3;
+            this.rad_sortName.TabStop = true;
+            this.rad_sortName.Text = "Name";
+            this.rad_sortName.UseVisualStyleBackColor = true;
+            this.rad_sortName.CheckedChanged += new System.EventHandler(this.rad_sortBy_CheckedChanged);
             // 
             // frm_main
             // 
@@ -525,6 +539,7 @@ namespace BatchSortAndRename
         private System.Windows.Forms.ToolStripProgressBar pb_mainProgress;
         private System.Windows.Forms.ToolStripStatusLabel lab_numFiles;
         private System.Windows.Forms.CheckBox cb_enableLog;
+        private System.Windows.Forms.RadioButton rad_sortName;
     }
 }
 
