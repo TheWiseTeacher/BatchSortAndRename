@@ -13,5 +13,8 @@ To use the program you need to :
   4. Configure your naming pattern
   5. Click **Process** to rename your batch of files
 
+## Credits
+Tool [icon](https://icon-icons.com/icon/gui-rename/157599) by [DiemenDesign](https://github.com/DiemenDesign/LibreICONS)
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
