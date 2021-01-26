@@ -23,6 +23,7 @@ namespace BatchSortAndRename
 
             // Default selected values
             rad_sortDateModified.Checked = rad_sortAscending.Checked = true;
+            cb_enableLog.Checked = true;
 
             // Default unchecked radio
             rad_sortDateCreated.Checked = rad_sortType.Checked = 
@@ -45,14 +46,13 @@ namespace BatchSortAndRename
             if (files.Length <= 0)
                 return;
 
-            lab_numFiles.Text = $"{files.Length} Files";
-            pb_mainProgress.Maximum = files.Length;
-            pb_mainProgress.Value = 0;
-
             foreach (string f in files)
             {
                 // Update list of files
                 fileName = Path.GetFileName(f);
+
+                if (fileName.StartsWith("_bsnr_"))
+                    continue;
 
                 if (rad_sortDateModified.Checked)
                     sortingValue = File.GetLastWriteTime(f);
@@ -72,12 +72,10 @@ namespace BatchSortAndRename
                     dgv_files.Columns[dgv_Sortedby.Index], 
                     rad_sortAscending.Checked ? ListSortDirection.Ascending : ListSortDirection.Descending
                 );
-
-                // Increment progress bar
-                pb_mainProgress.Value += 1;
             }
 
-            pb_mainProgress.Value = 0;
+            // Size is independent since we skip our logs now
+            lab_numFiles.Text = $"{dgv_files.Rows.Count} Files";
             GenerateFilesNewNames();
         }
 
@@ -196,6 +194,92 @@ namespace BatchSortAndRename
             }
 
             // Update
+            LoadDirectoryFiles();
+        }
+
+        private void btn_process_Click(object sender, EventArgs e)
+        {
+            StreamWriter sw = null;
+
+            if (dgv_files.Rows.Count <= 0)
+            {
+                MessageBox.Show("Nothing to process !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Update progress bar maximum
+            pb_mainProgress.Maximum = dgv_files.Rows.Count * 2;
+
+            // Let's save a history file too
+            if (cb_enableLog.Checked)
+            {
+                string logFile = currentDirectory + "\\_bsnr_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".log";
+                sw = File.CreateText(logFile);
+
+                if(!File.Exists(logFile))
+                {
+                    if (MessageBox.Show("The log file was not created, do you want to continue without a log of name changes ?",
+                        "Something is wrong", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                        return;
+                }
+            }
+
+            try
+            {
+                foreach (DataGridViewRow r in dgv_files.Rows)
+                {
+                    /*
+                    File.Move(
+                        // Source file
+                        currentDirectory + "\\" + r.Cells[dgv_filename.Index].Value,
+
+                        // Add this extension to prevent overwriting something else (still not safe at all - simple program)
+                        currentDirectory + "\\" + r.Cells[dgv_newfilename.Index].Value + "._snr_"
+                    );
+                    */
+
+                    // Increment progress bar
+                    pb_mainProgress.Value++;
+                }
+
+                foreach (DataGridViewRow r in dgv_files.Rows)
+                {
+                    /*
+                    File.Move(
+                        // Source file now as renamed before using the (._snr_) extension
+                        currentDirectory + "\\" + r.Cells[dgv_newfilename.Index].Value + "._snr_",
+
+                        // Now safely rename files as they should be
+                        currentDirectory + "\\" + r.Cells[dgv_newfilename.Index].Value
+                    );
+                    */
+
+                    // Log file old name
+                    if(cb_enableLog.Checked && sw != null)
+                        sw.WriteLine(r.Cells[dgv_newfilename.Index].Value + "  >>>  " + r.Cells[dgv_filename.Index].Value);
+
+                    // Increment progress bar
+                    pb_mainProgress.Value++;
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error renaming files !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                pb_mainProgress.Value = 0;
+                return;
+            }
+
+            pb_mainProgress.Value = 0;
+
+            if (cb_enableLog.Checked && sw != null)
+                sw.Close();
+
+            MessageBox.Show(
+                "All files renamed successfully!\nThe program will reload current directory files!", 
+                "Job's done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            // Now everything is renamed so let's reload the directory
             LoadDirectoryFiles();
         }
     }

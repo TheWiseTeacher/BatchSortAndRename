@@ -56,11 +56,12 @@ namespace BatchSortAndRename
             this.rad_sortType = new System.Windows.Forms.RadioButton();
             this.rad_sortDateCreated = new System.Windows.Forms.RadioButton();
             this.rad_sortDateModified = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.btn_process = new System.Windows.Forms.Button();
+            this.formStatusStrip = new System.Windows.Forms.StatusStrip();
             this.lab_task = new System.Windows.Forms.ToolStripStatusLabel();
             this.pb_mainProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.lab_numFiles = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cb_enableLog = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_files)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -68,7 +69,7 @@ namespace BatchSortAndRename
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_filename_numberStartFrom)).BeginInit();
             this.groupBox4.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.formStatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_files
@@ -150,7 +151,7 @@ namespace BatchSortAndRename
             // rad_sortDescending
             // 
             this.rad_sortDescending.AutoSize = true;
-            this.rad_sortDescending.Location = new System.Drawing.Point(159, 21);
+            this.rad_sortDescending.Location = new System.Drawing.Point(171, 21);
             this.rad_sortDescending.Name = "rad_sortDescending";
             this.rad_sortDescending.Size = new System.Drawing.Size(112, 17);
             this.rad_sortDescending.TabIndex = 3;
@@ -182,6 +183,7 @@ namespace BatchSortAndRename
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cb_enableLog);
             this.groupBox1.Controls.Add(this.tb_directory);
             this.groupBox1.Controls.Add(this.btn_refresh);
             this.groupBox1.Controls.Add(this.btn_selectFolder);
@@ -205,14 +207,14 @@ namespace BatchSortAndRename
             // 
             // num_filename_numberPadding
             // 
-            this.num_filename_numberPadding.Location = new System.Drawing.Point(159, 42);
+            this.num_filename_numberPadding.Location = new System.Drawing.Point(171, 42);
             this.num_filename_numberPadding.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
             this.num_filename_numberPadding.Name = "num_filename_numberPadding";
-            this.num_filename_numberPadding.Size = new System.Drawing.Size(168, 22);
+            this.num_filename_numberPadding.Size = new System.Drawing.Size(156, 22);
             this.num_filename_numberPadding.TabIndex = 2;
             this.num_filename_numberPadding.Value = new decimal(new int[] {
             3,
@@ -253,7 +255,7 @@ namespace BatchSortAndRename
             // 
             this.cb_extension.Location = new System.Drawing.Point(9, 122);
             this.cb_extension.Name = "cb_extension";
-            this.cb_extension.Size = new System.Drawing.Size(144, 20);
+            this.cb_extension.Size = new System.Drawing.Size(156, 20);
             this.cb_extension.TabIndex = 5;
             this.cb_extension.Text = "Use same file extension";
             this.cb_extension.UseVisualStyleBackColor = true;
@@ -264,9 +266,9 @@ namespace BatchSortAndRename
             this.tb_extension.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_extension.Enabled = false;
-            this.tb_extension.Location = new System.Drawing.Point(159, 122);
+            this.tb_extension.Location = new System.Drawing.Point(171, 122);
             this.tb_extension.Name = "tb_extension";
-            this.tb_extension.Size = new System.Drawing.Size(168, 22);
+            this.tb_extension.Size = new System.Drawing.Size(156, 22);
             this.tb_extension.TabIndex = 6;
             this.tb_extension.Validated += new System.EventHandler(this.tb_extension_Validated);
             // 
@@ -274,9 +276,9 @@ namespace BatchSortAndRename
             // 
             this.tb_filename_end.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_filename_end.Location = new System.Drawing.Point(159, 96);
+            this.tb_filename_end.Location = new System.Drawing.Point(171, 96);
             this.tb_filename_end.Name = "tb_filename_end";
-            this.tb_filename_end.Size = new System.Drawing.Size(168, 22);
+            this.tb_filename_end.Size = new System.Drawing.Size(156, 22);
             this.tb_filename_end.TabIndex = 4;
             this.tb_filename_end.Validated += new System.EventHandler(this.tb_filename_Validated);
             // 
@@ -284,9 +286,9 @@ namespace BatchSortAndRename
             // 
             this.tb_filename_begin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_filename_begin.Location = new System.Drawing.Point(159, 70);
+            this.tb_filename_begin.Location = new System.Drawing.Point(171, 70);
             this.tb_filename_begin.Name = "tb_filename_begin";
-            this.tb_filename_begin.Size = new System.Drawing.Size(168, 22);
+            this.tb_filename_begin.Size = new System.Drawing.Size(156, 22);
             this.tb_filename_begin.TabIndex = 3;
             this.tb_filename_begin.Validated += new System.EventHandler(this.tb_filename_Validated);
             // 
@@ -310,14 +312,14 @@ namespace BatchSortAndRename
             // 
             // num_filename_numberStartFrom
             // 
-            this.num_filename_numberStartFrom.Location = new System.Drawing.Point(159, 16);
+            this.num_filename_numberStartFrom.Location = new System.Drawing.Point(171, 16);
             this.num_filename_numberStartFrom.Maximum = new decimal(new int[] {
             -1981284353,
             -1966660860,
             0,
             0});
             this.num_filename_numberStartFrom.Name = "num_filename_numberStartFrom";
-            this.num_filename_numberStartFrom.Size = new System.Drawing.Size(168, 22);
+            this.num_filename_numberStartFrom.Size = new System.Drawing.Size(156, 22);
             this.num_filename_numberStartFrom.TabIndex = 1;
             this.num_filename_numberStartFrom.Value = new decimal(new int[] {
             1,
@@ -351,7 +353,7 @@ namespace BatchSortAndRename
             // rad_sortSize
             // 
             this.rad_sortSize.AutoSize = true;
-            this.rad_sortSize.Location = new System.Drawing.Point(159, 42);
+            this.rad_sortSize.Location = new System.Drawing.Point(171, 42);
             this.rad_sortSize.Name = "rad_sortSize";
             this.rad_sortSize.Size = new System.Drawing.Size(45, 17);
             this.rad_sortSize.TabIndex = 3;
@@ -375,7 +377,7 @@ namespace BatchSortAndRename
             // rad_sortDateCreated
             // 
             this.rad_sortDateCreated.AutoSize = true;
-            this.rad_sortDateCreated.Location = new System.Drawing.Point(159, 19);
+            this.rad_sortDateCreated.Location = new System.Drawing.Point(171, 19);
             this.rad_sortDateCreated.Name = "rad_sortDateCreated";
             this.rad_sortDateCreated.Size = new System.Drawing.Size(90, 17);
             this.rad_sortDateCreated.TabIndex = 3;
@@ -396,28 +398,29 @@ namespace BatchSortAndRename
             this.rad_sortDateModified.UseVisualStyleBackColor = true;
             this.rad_sortDateModified.CheckedChanged += new System.EventHandler(this.rad_sortBy_CheckedChanged);
             // 
-            // button1
+            // btn_process
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 375);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(333, 44);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Process";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_process.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_process.Location = new System.Drawing.Point(12, 375);
+            this.btn_process.Name = "btn_process";
+            this.btn_process.Size = new System.Drawing.Size(333, 44);
+            this.btn_process.TabIndex = 5;
+            this.btn_process.Text = "Process";
+            this.btn_process.UseVisualStyleBackColor = true;
+            this.btn_process.Click += new System.EventHandler(this.btn_process_Click);
             // 
-            // statusStrip1
+            // formStatusStrip
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.formStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lab_task,
             this.pb_mainProgress,
             this.lab_numFiles});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 426);
-            this.statusStrip1.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(824, 22);
-            this.statusStrip1.TabIndex = 6;
-            this.statusStrip1.Text = "statusStrip1";
+            this.formStatusStrip.Location = new System.Drawing.Point(0, 426);
+            this.formStatusStrip.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.formStatusStrip.Name = "formStatusStrip";
+            this.formStatusStrip.Size = new System.Drawing.Size(824, 22);
+            this.formStatusStrip.TabIndex = 6;
+            this.formStatusStrip.Text = "statusStrip1";
             // 
             // lab_task
             // 
@@ -441,13 +444,23 @@ namespace BatchSortAndRename
             this.lab_numFiles.Text = "0 Files";
             this.lab_numFiles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // cb_enableLog
+            // 
+            this.cb_enableLog.Location = new System.Drawing.Point(6, 49);
+            this.cb_enableLog.Name = "cb_enableLog";
+            this.cb_enableLog.Size = new System.Drawing.Size(159, 20);
+            this.cb_enableLog.TabIndex = 5;
+            this.cb_enableLog.Text = "Log name changes";
+            this.cb_enableLog.UseVisualStyleBackColor = true;
+            this.cb_enableLog.CheckedChanged += new System.EventHandler(this.cb_extension_CheckedChanged);
+            // 
             // frm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 448);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.formStatusStrip);
+            this.Controls.Add(this.btn_process);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
@@ -470,8 +483,8 @@ namespace BatchSortAndRename
             ((System.ComponentModel.ISupportInitialize)(this.num_filename_numberStartFrom)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.formStatusStrip.ResumeLayout(false);
+            this.formStatusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -506,11 +519,12 @@ namespace BatchSortAndRename
         private System.Windows.Forms.RadioButton rad_sortDateModified;
         private System.Windows.Forms.RadioButton rad_sortType;
         private System.Windows.Forms.RadioButton rad_sortSize;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.Button btn_process;
+        private System.Windows.Forms.StatusStrip formStatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel lab_task;
         private System.Windows.Forms.ToolStripProgressBar pb_mainProgress;
         private System.Windows.Forms.ToolStripStatusLabel lab_numFiles;
+        private System.Windows.Forms.CheckBox cb_enableLog;
     }
 }
 
