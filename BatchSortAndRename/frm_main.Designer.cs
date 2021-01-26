@@ -73,6 +73,7 @@ namespace BatchSortAndRename
             this.tsm_refresh = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsm_exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_dummy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_files)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -207,9 +208,9 @@ namespace BatchSortAndRename
             // 
             // cb_enableLog
             // 
-            this.cb_enableLog.Location = new System.Drawing.Point(6, 49);
+            this.cb_enableLog.Location = new System.Drawing.Point(9, 49);
             this.cb_enableLog.Name = "cb_enableLog";
-            this.cb_enableLog.Size = new System.Drawing.Size(159, 20);
+            this.cb_enableLog.Size = new System.Drawing.Size(156, 20);
             this.cb_enableLog.TabIndex = 5;
             this.cb_enableLog.Text = "Log name changes";
             this.cb_enableLog.UseVisualStyleBackColor = true;
@@ -375,6 +376,7 @@ namespace BatchSortAndRename
             // rad_sortName
             // 
             this.rad_sortName.AutoSize = true;
+            this.rad_sortName.Checked = true;
             this.rad_sortName.Location = new System.Drawing.Point(171, 42);
             this.rad_sortName.Name = "rad_sortName";
             this.rad_sortName.Size = new System.Drawing.Size(54, 17);
@@ -391,7 +393,6 @@ namespace BatchSortAndRename
             this.rad_sortSize.Name = "rad_sortSize";
             this.rad_sortSize.Size = new System.Drawing.Size(45, 17);
             this.rad_sortSize.TabIndex = 3;
-            this.rad_sortSize.TabStop = true;
             this.rad_sortSize.Text = "Size";
             this.rad_sortSize.UseVisualStyleBackColor = true;
             this.rad_sortSize.CheckedChanged += new System.EventHandler(this.rad_sortBy_CheckedChanged);
@@ -403,7 +404,6 @@ namespace BatchSortAndRename
             this.rad_sortType.Name = "rad_sortType";
             this.rad_sortType.Size = new System.Drawing.Size(68, 17);
             this.rad_sortType.TabIndex = 3;
-            this.rad_sortType.TabStop = true;
             this.rad_sortType.Text = "File type";
             this.rad_sortType.UseVisualStyleBackColor = true;
             this.rad_sortType.CheckedChanged += new System.EventHandler(this.rad_sortBy_CheckedChanged);
@@ -415,7 +415,6 @@ namespace BatchSortAndRename
             this.rad_sortDateCreated.Name = "rad_sortDateCreated";
             this.rad_sortDateCreated.Size = new System.Drawing.Size(90, 17);
             this.rad_sortDateCreated.TabIndex = 3;
-            this.rad_sortDateCreated.TabStop = true;
             this.rad_sortDateCreated.Text = "Date created";
             this.rad_sortDateCreated.UseVisualStyleBackColor = true;
             this.rad_sortDateCreated.CheckedChanged += new System.EventHandler(this.rad_sortBy_CheckedChanged);
@@ -427,7 +426,6 @@ namespace BatchSortAndRename
             this.rad_sortDateModified.Name = "rad_sortDateModified";
             this.rad_sortDateModified.Size = new System.Drawing.Size(98, 17);
             this.rad_sortDateModified.TabIndex = 3;
-            this.rad_sortDateModified.TabStop = true;
             this.rad_sortDateModified.Text = "Date modified";
             this.rad_sortDateModified.UseVisualStyleBackColor = true;
             this.rad_sortDateModified.CheckedChanged += new System.EventHandler(this.rad_sortBy_CheckedChanged);
@@ -550,11 +548,23 @@ namespace BatchSortAndRename
             this.tsm_exit.Text = "Exit";
             this.tsm_exit.Click += new System.EventHandler(this.tsm_exit_Click);
             // 
+            // btn_dummy
+            // 
+            this.btn_dummy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_dummy.Location = new System.Drawing.Point(438, 407);
+            this.btn_dummy.Name = "btn_dummy";
+            this.btn_dummy.Size = new System.Drawing.Size(364, 24);
+            this.btn_dummy.TabIndex = 6;
+            this.btn_dummy.Text = "Dummy button sent back (used to mute ding sound on enter)";
+            this.btn_dummy.UseVisualStyleBackColor = true;
+            // 
             // frm_main
             // 
+            this.AcceptButton = this.btn_dummy;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 468);
+            this.Controls.Add(this.btn_dummy);
             this.Controls.Add(this.formStatusStrip);
             this.Controls.Add(this.formMainMenuStrip);
             this.Controls.Add(this.btn_process);
@@ -565,12 +575,10 @@ namespace BatchSortAndRename
             this.Controls.Add(this.dgv_files);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.KeyPreview = true;
             this.MainMenuStrip = this.formMainMenuStrip;
             this.MinimumSize = new System.Drawing.Size(840, 486);
             this.Name = "frm_main";
             this.Text = "Batch Sort And Rename";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frm_main_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_files)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -636,6 +644,7 @@ namespace BatchSortAndRename
         private System.Windows.Forms.ToolStripMenuItem tsm_refresh;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsm_exit;
+        private System.Windows.Forms.Button btn_dummy;
     }
 }
 

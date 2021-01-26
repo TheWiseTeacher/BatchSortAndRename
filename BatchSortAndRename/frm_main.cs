@@ -22,6 +22,9 @@ namespace BatchSortAndRename
             // Append version to form title
             this.Text = this.Text + " v" + Application.ProductVersion;
 
+            // Hide dummy button behind the files table
+            btn_dummy.SendToBack();
+
             dgv_files.Columns[dgv_filename.Index].ValueType = typeof(string);
             dgv_files.Columns[dgv_newfilename.Index].ValueType = typeof(string);
 
@@ -155,12 +158,6 @@ namespace BatchSortAndRename
             }
 
             GenerateFilesNewNames();
-        }
-
-        private void frm_main_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                ActiveControl = dgv_files;
         }
 
         private void tb_filename_Validated(object sender, EventArgs e)
