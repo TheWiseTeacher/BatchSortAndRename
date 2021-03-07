@@ -65,14 +65,14 @@ namespace BatchSortAndRename
             this.pb_mainProgress = new System.Windows.Forms.ToolStripProgressBar();
             this.lab_numFiles = new System.Windows.Forms.ToolStripStatusLabel();
             this.formMainMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_about = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_github = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_selectFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_refresh = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsm_exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_about = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_github = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_dummy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_files)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -356,7 +356,7 @@ namespace BatchSortAndRename
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(147, 20);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Number padding";
+            this.label4.Text = "Start from number";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox4
@@ -488,29 +488,6 @@ namespace BatchSortAndRename
             this.formMainMenuStrip.TabIndex = 1;
             this.formMainMenuStrip.Text = "menuStrip";
             // 
-            // helpToolStripMenuItem
-            // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsm_about,
-            this.tsm_github});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // tsm_about
-            // 
-            this.tsm_about.Name = "tsm_about";
-            this.tsm_about.Size = new System.Drawing.Size(180, 22);
-            this.tsm_about.Text = "About";
-            this.tsm_about.Click += new System.EventHandler(this.tsm_about_Click);
-            // 
-            // tsm_github
-            // 
-            this.tsm_github.Name = "tsm_github";
-            this.tsm_github.Size = new System.Drawing.Size(180, 22);
-            this.tsm_github.Text = "Github";
-            this.tsm_github.Click += new System.EventHandler(this.tsm_github_Click);
-            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -547,6 +524,29 @@ namespace BatchSortAndRename
             this.tsm_exit.Size = new System.Drawing.Size(187, 22);
             this.tsm_exit.Text = "Exit";
             this.tsm_exit.Click += new System.EventHandler(this.tsm_exit_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsm_about,
+            this.tsm_github});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // tsm_about
+            // 
+            this.tsm_about.Name = "tsm_about";
+            this.tsm_about.Size = new System.Drawing.Size(110, 22);
+            this.tsm_about.Text = "About";
+            this.tsm_about.Click += new System.EventHandler(this.tsm_about_Click);
+            // 
+            // tsm_github
+            // 
+            this.tsm_github.Name = "tsm_github";
+            this.tsm_github.Size = new System.Drawing.Size(110, 22);
+            this.tsm_github.Text = "Github";
+            this.tsm_github.Click += new System.EventHandler(this.tsm_github_Click);
             // 
             // btn_dummy
             // 
