@@ -150,6 +150,7 @@ namespace BatchSortAndRename
         private void cb_extension_CheckedChanged(object sender, EventArgs e)
         {
             tb_extension.Enabled = cb_extension.Checked;
+            GenerateFilesNewNames();
         }
 
         private void tb_extension_Validated(object sender, EventArgs e)
